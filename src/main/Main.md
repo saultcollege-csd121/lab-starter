@@ -8,6 +8,9 @@ Enter your name here: Vinicius
 
 ## The best animals
 
-1. Cat
-2. Dog
-3. Parrot
+1. Axolotl
+2. Bonobo
+3. Capybara
+4. Cat
+5. Dog
+6. Parrot
