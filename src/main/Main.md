@@ -8,6 +8,6 @@ Enter your name here: Jaden
 
 ## The best animals
 
-1. Cuttlefish
-2. Platypus
-3. Three-toed sloth
+1. Anteater
+2. Crab
+3. Owl
