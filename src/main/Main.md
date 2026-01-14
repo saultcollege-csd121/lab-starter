@@ -8,6 +8,9 @@ Enter your name here: ___________
 
 ## The best animals
 
-1. Axolotl
-2. Bonobo
-3. Capybara
+1. Alligator
+2. Centipede 
+3. Cuttlefish
+4. Platypus
+5. Scorpion
+6. Three-toed sloth
