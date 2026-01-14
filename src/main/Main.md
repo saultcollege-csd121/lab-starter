@@ -9,5 +9,8 @@ Enter your name here: Jaden
 ## The best animals
 
 1. Anteater
-2. Crab
-3. Owl
+2. Axolotl
+3. Bonobo
+4. Capybara
+5. Crab
+6. Owl
