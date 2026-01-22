@@ -6,6 +6,6 @@ Enter your name here: ___________
 
 ## The best animals
 
-1. Cuttlefish
-2. Platypus
-3. Three-toed sloth
+1. Rat
+2. Mouse
+3. Vole
