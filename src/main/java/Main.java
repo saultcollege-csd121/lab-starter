@@ -11,7 +11,7 @@ import java.net.http.HttpResponse; // This is a package for HTTP responses, cont
 
 /*
 
-Types used in this code:
+Types used in this code: s
 JOptionPane: class : used to show message dialogs
 Math: class : used to generate random numbers
 HttpRequest: class : represents a request sent to a server
