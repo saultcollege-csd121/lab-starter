@@ -9,40 +9,61 @@ import java.util.List;
 import static core.Card.Rank.ACE;
 import static core.Card.Suit.SPADES;
 
+/**
+ * Main entry point for the High Card game application
+ * This class handles the user interface and game flow, allowing two players
+ * to compete by drawing cards and comparing them.
+ */
 public class Main {
-
+    /**
+     * Runs the High Card game between two players.
+     *
+     * The game follows these steps:
+     * <ol>
+     *   <li>Prompts for two player names</li>
+     *   <li>Creates a new game with those players</li>
+     *   <li>Plays rounds where each player draws a card</li>
+     *   <li>Displays the winner of each round</li>
+     *   <li>Continues until the user quits or cards run out</li>
+     * </ol>
+     *
+     * Game continues as long as:
+     * <ul>
+     *   <li>The user chooses to play again (enters 'y')</li>
+     *   <li>There are enough cards left in the deck</li>
+     * </ul>
+     */
     static void main() {
 
-        /*
-             Place your main game logic here.
-             This is the ONLY code file that should have any reference to the Console class.
-
-             The basic flow of the game is as follows:
-
-             1. Prompt for player names
-             2. Deal a shuffled deck evenly to each of the players
-             3. While the players have cards and wish to continue:
-                 b. All players draw one card and reveal them
-                 c. The player with the higher card wins the round (or it's a tie)
-         */
-        // Get User name
         String name1 = Console.prompt("Enter Player 1 name: ");
         String name2 = Console.prompt("Enter Player 2 name; ");
 
-        // Create a new game witb players name
+         /**
+         Here we create a new HighCardGame object
+         We pass the two names to the constructor so the game can create
+         the players inside the HighCardGame class
+
+         Main class only control the game, but HighCardGame class do the logic
+         */
         HighCardGame game = new HighCardGame(name1, name2);
 
-        boolean playAgain = true;
+        boolean playAgain = true; // Control if the user want play again
+
+        // keeps running the game until the user wants to quit or cards run out
 
         while (playAgain && game.canPlayRound()) {
 
-            // Nested type that calls for game round
-            HighCardGame.RoundResult result = game.playRound();
+             /*
+             playRound() return a RoundResult record.
+             RoundResult > store card1, card2 and winner player
+             */
+
+            HighCardGame.RoundResult result = game.playRound(); // record > (card1, card2, winner)
 
             Console.println(name1 + " drew " + result.card1());
             Console.println(name2 + " drew: " + result.card2());
 
-            if (result.winner() == null) {
+            if (result.winner() == null) { // winner() > record > player object
                 Console.println("its a tie ");
             } else {
                 Console.println(result.winner().getName() + " wins the round");
