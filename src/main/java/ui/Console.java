@@ -20,7 +20,7 @@ public class Console {
     public static void println(String message) {
         IO.println(message);
     }
-
+    
     /**
      * Prompt the user for input using the given promptMessage
      * @param promptMessage The message to prompt the user with
