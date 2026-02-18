@@ -1,5 +1,9 @@
 package tictactoe.ui;
 
+import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.diogonunes.jcolor.Attribute.*;
+
+
 import java.text.ParseException;
 import java.util.Scanner;
 
@@ -23,7 +27,7 @@ public class Console {
      * @return The user's response
      */
     public static String prompt(String promptMessage) {
-        IO.print(promptMessage);
+        IO.print(colorize(promptMessage, BLACK_TEXT(), YELLOW_BACK(), BOLD()));
         var scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
@@ -33,7 +37,7 @@ public class Console {
      * @param message The message to display
      */
     public static void printAlert(String message) {
-        IO.println(message);
+        IO.println(colorize(message, BOLD(), BRIGHT_YELLOW_TEXT(), GREEN_BACK()));
     }
 
     /**
