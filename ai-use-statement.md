@@ -1,4 +1,5 @@
 # AI Use Statement
 
-Replace this with your AI Use Statement, which is required **WHETHER OR NOT** you used AI.
-Failure to include this statement will result in a reduced grade of up to 100%.
+I used chatGPT in learning mode and asked for ways to implement the random method in the game. 
+I asked about how the type for the cardstack should work.
+https://chatgpt.com/share/698e32b8-7f70-8006-8817-8fcabbe7a1c8
