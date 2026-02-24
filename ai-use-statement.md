@@ -1,4 +1,2 @@
 # AI Use Statement
-
-Replace this with your AI Use Statement, which is required **WHETHER OR NOT** you used AI.
-Failure to include this statement will result in a reduced grade of up to 100%.
+I EXTENSIVELY used Claude in learning mode to guide me through this lab, I learned lots, and took plenty of notes https://claude.ai/share/a9593c64-ac7f-47e4-bb1e-d97f5fead005
