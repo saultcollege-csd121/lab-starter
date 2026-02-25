@@ -101,13 +101,23 @@ public class Board {
                 return Optional.of(board[0][i]);
             }
         }
-        // Check the diagonals
-        if (board[0][0] != null && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+
+        // Check main diagonal (top-left to bottom-right)
+        if (board[0][0] != null &&
+                board[0][0] == board[1][1] &&
+                board[1][1] == board[2][2]) {
+
             return Optional.of(board[0][0]);
         }
-        if (board[0][2] != null && board[0][2] == board[1][1] && board[1][1] == board[1][0]) {
+
+        // Check other diagonal
+        if (board[0][2] != null &&
+                board[0][2] == board[1][1] &&
+                board[1][1] == board[2][0]) {
+
             return Optional.of(board[0][2]);
         }
+
         return Optional.empty();
     }
 
