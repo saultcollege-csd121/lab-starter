@@ -1,4 +1,5 @@
 # AI Use Statement
 
-Replace this with your AI Use Statement, which is required **WHETHER OR NOT** you used AI.
-Failure to include this statement will result in a reduced grade of up to 100%.
+I used Claude AI to help me better understand how to implement JUnit testing. It provided explanations and examples that made the testing process clearer and helped me visualize different scenarios and edge cases that should be tested. Below is a link to the conversation.
+
+https://claude.ai/share/4951f508-98a0-4650-9c9b-071008b6d76e
