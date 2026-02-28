@@ -3,8 +3,12 @@ package tictactoe.ui;
 import java.text.ParseException;
 import java.util.Scanner;
 
+import com.diogonunes.jcolor.AnsiFormat;
 import tictactoe.game.Board;
 import tictactoe.game.Position;
+
+import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.diogonunes.jcolor.Attribute.*;
 
 /**
  * Helper methods for doing console-based user interaction
@@ -13,17 +17,18 @@ public class Console {
 
 
     public static void println(String message) {
-        IO.println(message);
+        var fPrint = TEXT_COLOR(172, 172, 172); // "Silver chalice"
+        IO.println(colorize(message, fPrint));
     }
 
-    /**
      /**
      * Prompt the user for input using the given promptMessage
      * @param promptMessage The message to prompt the user with
      * @return The user's response
      */
     public static String prompt(String promptMessage) {
-        IO.print(promptMessage);
+        var fPrompt = new AnsiFormat(BRIGHT_CYAN_TEXT(), BLUE_BACK());
+        IO.print(colorize(promptMessage, fPrompt));
         var scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
@@ -33,7 +38,8 @@ public class Console {
      * @param message The message to display
      */
     public static void printAlert(String message) {
-        IO.println(message);
+        var fAlert = new AnsiFormat(BRIGHT_WHITE_TEXT(), RED_BACK());
+        IO.println(colorize(message, fAlert));
     }
 
     /**

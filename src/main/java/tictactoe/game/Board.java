@@ -105,7 +105,9 @@ public class Board {
         if (board[0][0] != null && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
             return Optional.of(board[0][0]);
         }
-        if (board[0][2] != null && board[0][2] == board[1][1] && board[1][1] == board[1][0]) {
+        // Found the subtle bug!
+        // It's not checking the bottom left position at the end but the center left one!
+        if (board[0][2] != null && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
             return Optional.of(board[0][2]);
         }
         return Optional.empty();
