@@ -6,14 +6,18 @@ import java.util.Scanner;
 import tictactoe.game.Board;
 import tictactoe.game.Position;
 
+import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.diogonunes.jcolor.Attribute.*;
+
+
 /**
  * Helper methods for doing console-based user interaction
  */
-public class Console {
+public class  Console {
 
 
     public static void println(String message) {
-        IO.println(message);
+        IO.println(colorize(message,CYAN_TEXT()));
     }
 
     /**
@@ -28,12 +32,14 @@ public class Console {
         return scanner.nextLine();
     }
 
+
     /**
      * Display an alert message to the user
      * @param message The message to display
      */
     public static void printAlert(String message) {
-        IO.println(message);
+
+        IO.println(colorize(message, RED_TEXT(), BOLD()));
     }
 
     /**
