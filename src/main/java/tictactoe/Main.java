@@ -7,6 +7,7 @@ import tictactoe.ui.Console;
 import static tictactoe.game.TicTacToeGame.Status.*;
 
 class Main {
+
     static void main() {
 
         Console.println("Welcome to Tic Tac Toe!");

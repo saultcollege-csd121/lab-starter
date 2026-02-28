@@ -6,6 +6,10 @@ import java.util.Scanner;
 import tictactoe.game.Board;
 import tictactoe.game.Position;
 
+import com.diogonunes.jcolor.Attribute;
+
+import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.diogonunes.jcolor.Attribute.*;
 /**
  * Helper methods for doing console-based user interaction
  */
@@ -44,8 +48,9 @@ public class Console {
      * @return The position selected by the user
      */
     public static Position promptForPosition(String prompt, Board board) {
+        Attribute[] myFormat = new Attribute[]{RED_TEXT(), GREEN_BACK() };
 
-        final String helpMessage = "Input must be in the format 'row column', e.g., '1 2' or 't m' for the top middle cell.";
+        final String helpMessage = (colorize("Input must be in the format 'row column', e.g., '1 2' or 't m' for the top middle cell.",myFormat));
 
         while ( true ) {
             var input = IO.readln(prompt).trim();
@@ -56,7 +61,7 @@ public class Console {
                 var pos = Position.parse(input);
 
                 if (! board.isEmptyAt(pos)) {
-                    printAlert("That position is already taken.");
+                    printAlert(colorize("That position is already taken.",myFormat));
                     continue;
                 }
 
