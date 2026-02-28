@@ -1,17 +1,19 @@
 package tictactoe.game;
-
 import java.util.Arrays;
 import java.util.Optional;
+
 
 /**
  * Represents a TicTacToe game board
  */
 public class Board {
 
+
     /**
      * The current game board state
      */
     private final Token[][] board = new Token[3][3];
+
 
     /**
      * Initialize a new, empty tictactoe board
@@ -24,6 +26,7 @@ public class Board {
         }
     }
 
+
     /**
      * Copy constructor. Creates a new board that is a copy of the given one.
      * @param other The board to copy
@@ -33,6 +36,7 @@ public class Board {
             System.arraycopy(other.board[i], 0, board[i], 0, 3);
         }
     }
+
 
     /**
      * Initialize a new board with the given state (useful for testing)
@@ -62,6 +66,7 @@ public class Board {
         }
     }
 
+
     /**
      * @param pos A board position
      * @return The row index in this.board corresponding to the given board position
@@ -74,6 +79,7 @@ public class Board {
         };
     }
 
+
     /**
      * @param pos A board position
      * @return The column index in this.board corresponding to the given board position
@@ -85,6 +91,7 @@ public class Board {
             case Right -> 2;
         };
     }
+
 
     /**
      * @return The PlayerToken for the winner of the game, or Optional.empty() if there is currently no winner
@@ -125,6 +132,7 @@ public class Board {
         return true;
     }
 
+
     /**
      * @param pos A game board position
      * @return true if the given board position is empty; false otherwise
@@ -133,13 +141,18 @@ public class Board {
         return board[rowIdx(pos)][colIdx(pos)] == null;
     }
 
+
     /**
      * Places the given token on the game board at the given position.
      * @param pos A game board position
      * @param token The token to place
      */
     public void place(Position pos, Token token) {
-        board[rowIdx(pos)][colIdx(pos)] = token;
+        if (isEmptyAt(pos)){
+            board[rowIdx(pos)][colIdx(pos)] = token;}
+        else {
+            throw new IllegalArgumentException("This position is already taken");
+        }
     }
 
     /**

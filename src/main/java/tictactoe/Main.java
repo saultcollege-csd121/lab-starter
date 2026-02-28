@@ -1,17 +1,21 @@
 package tictactoe;
+import com.diogonunes.jcolor.AnsiFormat;
 
+import com.diogonunes.jcolor.Attribute;
 import tictactoe.game.TicTacToeGame;
 import tictactoe.game.Position;
 import tictactoe.ui.Console;
 
+
+import static com.diogonunes.jcolor.Ansi.colorize;
 import static tictactoe.game.TicTacToeGame.Status.*;
 
 class Main {
     static void main() {
 
-        Console.println("Welcome to Tic Tac Toe!");
-        var nameX = Console.prompt("Player X name: ");
-        var nameO = Console.prompt("Player O name: ");
+        Console.println(colorize("Welcome to Tic Tac Toe!", Attribute.GREEN_TEXT()));
+        var nameX = Console.prompt(colorize("Player X name: ", Attribute.RED_TEXT()));
+        var nameO = Console.prompt(colorize("Player O name: ", Attribute.BLUE_TEXT()));
         var game = new TicTacToeGame(nameX, nameO);
 
         while (game.getStatus() == InProgress) {
@@ -39,7 +43,7 @@ class Main {
 
             switch (game.getStatus()) {
                 case Draw -> Console.println("It's a draw!");
-                case XWins, OWins -> Console.println("%s wins!".formatted(game.whoseTurn().name()));
+                case XWins, OWins -> Console.println(colorize("%s wins!".formatted(game.whoseTurn().name()), Attribute.GREEN_TEXT(), Attribute.WHITE_BACK()));
             }
 
         }
