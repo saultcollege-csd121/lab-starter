@@ -6,6 +6,9 @@ import java.util.Scanner;
 import tictactoe.game.Board;
 import tictactoe.game.Position;
 
+import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.diogonunes.jcolor.Attribute.*;
+
 /**
  * Helper methods for doing console-based user interaction
  */
@@ -23,7 +26,7 @@ public class Console {
      * @return The user's response
      */
     public static String prompt(String promptMessage) {
-        IO.print(promptMessage);
+        IO.print(colorize(promptMessage, BLUE_TEXT(), BLACK_BACK()));
         var scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
@@ -48,7 +51,7 @@ public class Console {
         final String helpMessage = "Input must be in the format 'row column', e.g., '1 2' or 't m' for the top middle cell.";
 
         while ( true ) {
-            var input = IO.readln(prompt).trim();
+            var input = IO.readln(colorize(prompt, GREEN_TEXT(),BLACK_BACK())).trim();
 
             // The .parse method may throw if the user entered invalid location text, so we try/catch
             try {
@@ -56,13 +59,13 @@ public class Console {
                 var pos = Position.parse(input);
 
                 if (! board.isEmptyAt(pos)) {
-                    printAlert("That position is already taken.");
+                    printAlert(colorize("That position is already taken.", CYAN_TEXT(),BLACK_BACK()));
                     continue;
                 }
 
                 return pos;
             } catch ( ParseException e ) {
-                printAlert(helpMessage);
+                printAlert(colorize(helpMessage, RED_TEXT(),BLACK_BACK() ));
             }
         }
     }
