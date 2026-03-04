@@ -88,7 +88,7 @@ void main() {
 
         Files.writeString(Paths.get("output.txt"), lines, StandardOpenOption.WRITE);
     } catch ( IOException e ) {
-        IO.println("File not found");
+        IO.println("File not found" + 123);
     }
 
 }
