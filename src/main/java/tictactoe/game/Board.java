@@ -2,6 +2,8 @@ package tictactoe.game;
 
 import java.util.Arrays;
 import java.util.Optional;
+import static com.diogonunes.jcolor.Ansi.*;
+import static com.diogonunes.jcolor.Attribute.*;
 
 /**
  * Represents a TicTacToe game board
@@ -152,12 +154,21 @@ public class Board {
     @Override
     public String toString() {
         var boardString = new StringBuilder();
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                boardString.append(board[i][j] == null ? '.' : board[i][j].toString());
+
+                if (board[i][j] == null) {
+                    boardString.append(colorize(".", TEXT_COLOR(180, 180, 180)));
+                } else if (board[i][j] == Token.X) {
+                    boardString.append(colorize("X", BLUE_TEXT(), BOLD()));
+                } else {
+                    boardString.append(colorize("O", RED_TEXT(), BOLD()));
+                }
             }
             boardString.append("\n");
         }
+
         return boardString.toString();
     }
 
