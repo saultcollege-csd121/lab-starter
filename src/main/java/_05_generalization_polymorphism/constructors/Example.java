@@ -2,7 +2,7 @@ package _05_generalization_polymorphism.constructors;
 
 public class Example {
 
-    static class A {
+    static class A extends Object {
         public A() {
             System.out.println("A's constructor");
         }
@@ -22,6 +22,11 @@ public class Example {
         public C() {
             super("aksjdfsjak");
             System.out.println("C's constructor");
+        }
+
+        @Override
+        public String toString() {
+            return "aksdjksajdf";
         }
     }
 
