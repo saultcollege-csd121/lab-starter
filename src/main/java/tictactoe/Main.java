@@ -3,6 +3,7 @@ package tictactoe;
 import tictactoe.game.TicTacToeGame;
 import tictactoe.game.Position;
 import tictactoe.game.Token;
+import tictactoe.game.player.Player;
 import tictactoe.ui.Console;
 
 import static tictactoe.game.TicTacToeGame.Status.*;
@@ -10,7 +11,9 @@ import static tictactoe.game.TicTacToeGame.Status.*;
 class Main {
     static void main() {
 
-        Console.println("Welcome to Tic Tac Toe!");
+        Console.println("Welcome to Tic Tac Toe! You, the user, can play with another user, or play with a bot, " +
+                "either Omola or Linus. To play with a bot, simply type @ and their name as whichever player you want it to be. " +
+                "(i.e. as player X or player O)");
         var playerX = Console.promptForPlayer(Token.X);
         var playerO = Console.promptForPlayer(Token.O);
         var game = new TicTacToeGame(playerX, playerO);
@@ -19,12 +22,12 @@ class Main {
 
             var turnData = game.doNextTurn();
 
-            Console.println("%s plays %s at %s %s".formatted(turnData.whoseTurn().name(), turnData.whoseTurn().token(), turnData.positionPlayed().row(), turnData.positionPlayed().col()));
+            Console.println("%s plays %s at %s %s".formatted(turnData.whoseTurn().name, turnData.whoseTurn().token, turnData.positionPlayed().row(), turnData.positionPlayed().col()));
             Console.showBoard(turnData.newBoardState());
 
             switch (game.getStatus()) {
                 case Draw -> Console.println("It's a draw!");
-                case XWins, OWins -> Console.println("%s wins!".formatted(turnData.whoseTurn().name()));
+                case XWins, OWins -> Console.println("%s wins!".formatted(turnData.whoseTurn().name));
             }
 
         }
