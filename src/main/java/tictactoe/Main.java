@@ -10,7 +10,8 @@ import static tictactoe.game.TicTacToeGame.Status.*;
 class Main {
     static void main() {
 
-        Console.println("Welcome to Tic Tac Toe!");
+        Console.println("Welcome to Tic Tac Toe!\n" +
+                "Computer players available: @Randy (random), @Omola (smart)");
         var playerX = Console.promptForPlayer(Token.X);
         var playerO = Console.promptForPlayer(Token.O);
         var game = new TicTacToeGame(playerX, playerO);

@@ -2,7 +2,10 @@ package tictactoe.ui;
 
 import tictactoe.game.*;
 import com.diogonunes.jcolor.AnsiFormat;
+import tictactoe.game.player.Omola;
 import tictactoe.game.player.Player;
+import tictactoe.game.player.Randy;
+import tictactoe.game.player.humanPlayer;
 
 import java.text.ParseException;
 
@@ -76,10 +79,12 @@ public class Console {
 
                 switch ( input ) {
                     // TODO: add cases here for the different computer players you implement
+                    case "randy" -> {return new Randy(whichPlayer);}
+                    case "omola" -> {return new Omola(whichPlayer);}
                     default -> printAlert(helpMessage);
                 }
             } else {
-                return new Player(input, whichPlayer);
+                return new humanPlayer(input, whichPlayer);
             }
         }
     }
