@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package _05_generalization_polymorphism.interfaces.hierarchy;
+package _06_interfaces.hierarchy;
 
 // Interfaces can extend other interfaces
 // All classes that implement this interface must implement the methods in the

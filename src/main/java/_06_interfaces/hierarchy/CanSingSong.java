@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package _05_generalization_polymorphism.interfaces.hierarchy;
+package _06_interfaces.hierarchy;
 
 
 // This interface demonstrates multiple inheritance in interfaces!
