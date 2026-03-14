@@ -3,26 +3,59 @@ package tictactoe.game.player;
 import tictactoe.game.Board;
 import tictactoe.game.Position;
 import tictactoe.game.Token;
-import tictactoe.ui.Console;
 
-public record Player(String name, Token token) {
+/**
+ * Represents a player in the TicTacToe game.
+ *
+ * This is an abstract base class that defines the common
+ * properties and behavior shared by all player types.
+ * Subclasses implement the strategy used to select the
+ * next move on the board.
+ */
+public abstract class Player {
 
     /**
-     * Prompts the player to pick their next move.
-     * Will continue to prompt until the player picks a valid move (i.e. an empty position on the board)
-     * @param board The current state of the board
-     * @return The (valid) position on the board where the player wants to place their token
+     * The display name of the player.
      */
-    public Position getNextMove(Board board) {
-        while (true) {
-            var prompt = "%s's turn (%s). Enter your move (row column): ".formatted(this.name(), this.token());
-            var pos = Console.promptForPosition(prompt, board);
+    protected String name;
 
-            if (board.isEmptyAt(pos)) {
-                return pos;
-            }
-            Console.printAlert("That position is not valid. Please enter a valid position.");
-        }
+    /**
+     * The token used by the player (X or O).
+     */
+    protected Token token;
+
+    /**
+     * Constructs a new Player with the given name and token.
+     *
+     * @param name The player's name
+     * @param token The token used by the player (X or O)
+     */
+    public Player(String name, Token token) {
+        this.name = name;
+        this.token = token;
     }
 
+    /**
+     * @return The name of this player
+     */
+    public String name() {
+        return name;
+    }
+
+    /**
+     * @return The token used by this player
+     */
+    public Token token() {
+        return token;
+    }
+
+    /**
+     * Determines the next move the player wishes to make.
+     * Different player types implement different strategies
+     * for selecting a move.
+     *
+     * @param board The current game board
+     * @return The position where the player wants to place their token
+     */
+    public abstract Position getNextMove(Board board);
 }
