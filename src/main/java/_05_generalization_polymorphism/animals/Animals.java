@@ -40,7 +40,7 @@ public class Animals {
         }
     }
 
-    public static void main() {
+    static void main() {
 
         var animals = List.of(
             new Cat(),
