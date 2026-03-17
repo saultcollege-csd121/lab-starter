@@ -5,24 +5,36 @@ import tictactoe.game.Position;
 import tictactoe.game.Token;
 import tictactoe.ui.Console;
 
-public record Player(String name, Token token) {
+public abstract class Player {
+     String name;
+     Token token;
 
-    /**
-     * Prompts the player to pick their next move.
-     * Will continue to prompt until the player picks a valid move (i.e. an empty position on the board)
-     * @param board The current state of the board
-     * @return The (valid) position on the board where the player wants to place their token
-     */
-    public Position getNextMove(Board board) {
-        while (true) {
-            var prompt = "%s's turn (%s). Enter your move (row column): ".formatted(this.name(), this.token());
-            var pos = Console.promptForPosition(prompt, board);
+     //protected constructor.
+     protected Player(String name, Token token){
+         this.name = name;
+         this.token = token;
+     }
 
-            if (board.isEmptyAt(pos)) {
-                return pos;
-            }
-            Console.printAlert("That position is not valid. Please enter a valid position.");
+
+    public String getName(){
+        return(this.name);
+    }
+
+    public Token getToken(){
+        return(this.token);
+    }
+
+
+    public Token opponentToken(){
+
+        if (this.token == Token.X) {
+            return(Token.O);
+        }
+        else{
+            return(Token.X);
         }
     }
+
+    public abstract Position getNextMove(Board board);
 
 }
