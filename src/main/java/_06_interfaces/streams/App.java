@@ -2,6 +2,7 @@ package _06_interfaces.streams;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Comparator;
 
 public class App {
 
@@ -36,7 +37,7 @@ public class App {
         var max = numbers.stream().reduce(Integer.MIN_VALUE, (total, next) -> next > total ? next : total);  // 20
 
         // OR
-        max = numbers.stream().max(Integer::compareTo).get();                                                // 20
+        max = numbers.stream().max(Integer::compareTo).get();
 
         // FlatMap examples
         record Person(String name, List<Integer> luckyNumbers) {}
@@ -48,9 +49,13 @@ public class App {
 
         // Sort people by name
         var sortedPeople = people.stream().sorted((p1, p2) -> p1.name().compareTo(p2.name())).toList();
+        // OR
+        sortedPeople = people.stream().sorted(Comparator.comparing(Person::name)).toList();
 
         // Sort people by the second number
         var sortedPeople2 = people.stream().sorted((p1, p2) -> p1.luckyNumbers().get(1) - p2.luckyNumbers().get(1)).toList();
+        sortedPeople2 = people.stream().sorted((p1, p2) -> Integer.compare(p1.luckyNumbers().get(1), p2.luckyNumbers().get(1))).toList();
+        sortedPeople2 = people.stream().sorted(Comparator.comparing(p -> p.luckyNumbers().get(1))).toList();
 
         var alice = people.stream().reduce(null, (found, next) -> next.name() == "Alice" ? next : null);  // Person(name=Alice, luckyNumbers=[1, 2, 3])
         var allLuckyNumbers = people.stream().flatMap(n -> n.luckyNumbers().stream()).toList(); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
