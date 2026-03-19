@@ -10,7 +10,7 @@ import static tictactoe.game.TicTacToeGame.Status.*;
 class Main {
     static void main() {
 
-        Console.println("Welcome to Tic Tac Toe!");
+        Console.println("Welcome to Tic Tac Toe! \nTo play the Linus or Optimus bot, add an @ before the name, eg. @Linus, @Optimus");
         var playerX = Console.promptForPlayer(Token.X);
         var playerO = Console.promptForPlayer(Token.O);
         var game = new TicTacToeGame(playerX, playerO);

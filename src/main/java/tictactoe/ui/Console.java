@@ -2,6 +2,9 @@ package tictactoe.ui;
 
 import tictactoe.game.*;
 import com.diogonunes.jcolor.AnsiFormat;
+import tictactoe.game.player.HumanPlayer;
+import tictactoe.game.player.Linus;
+import tictactoe.game.player.Optimus;
 import tictactoe.game.player.Player;
 
 import java.text.ParseException;
@@ -75,11 +78,16 @@ public class Console {
                 input = input.substring(1).toLowerCase(); // remove the '@' prefix
 
                 switch ( input ) {
-                    // TODO: add cases here for the different computer players you implement
+                    case "linus" ->{
+                        return new Linus("Linus", whichPlayer);
+                    }
+                    case "optimus" -> {
+                        return new Optimus("Optimus", whichPlayer);
+                    }
                     default -> printAlert(helpMessage);
                 }
             } else {
-                return new Player(input, whichPlayer);
+                return new HumanPlayer(input, whichPlayer);
             }
         }
     }
