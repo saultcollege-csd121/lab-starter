@@ -5,24 +5,52 @@ import tictactoe.game.Position;
 import tictactoe.game.Token;
 import tictactoe.ui.Console;
 
-public record Player(String name, Token token) {
+/**
+ * The Player class is an abstract base class for all types of players.
+ * A player has a name and a token (X or O), and must be able to choose
+ * their next move on the board.
+ * This class is extended by HumanPlayer and computer players like Randy.
+ */
+public abstract class Player {
+
+    protected String name;
+    protected Token token;
 
     /**
-     * Prompts the player to pick their next move.
-     * Will continue to prompt until the player picks a valid move (i.e. an empty position on the board)
-     * @param board The current state of the board
-     * @return The (valid) position on the board where the player wants to place their token
+     * Creates a new Player with a name and token.
+     *
+     * @param name  the name of the player
+     * @param token the token used by the player (X or O)
      */
-    public Position getNextMove(Board board) {
-        while (true) {
-            var prompt = "%s's turn (%s). Enter your move (row column): ".formatted(this.name(), this.token());
-            var pos = Console.promptForPosition(prompt, board);
-
-            if (board.isEmptyAt(pos)) {
-                return pos;
-            }
-            Console.printAlert("That position is not valid. Please enter a valid position.");
-        }
+    public Player(String name, Token token) {
+        this.name = name;
+        this.token = token;
     }
 
+    /**
+     * Gets the player's name.
+     *
+     * @return the player's name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Gets the player's token.
+     *
+     * @return the player's token
+     */
+    public Token getToken() {
+        return token;
+    }
+
+    /**
+     * Gets the next move the player wants to make.
+     * Each subclass must implement this differently.
+     *
+     * @param board the current game board
+     * @return the position the player chooses
+     */
+    public abstract Position getNextMove(Board board);
 }

@@ -1,7 +1,6 @@
 package tictactoe;
 
 import tictactoe.game.TicTacToeGame;
-import tictactoe.game.Position;
 import tictactoe.game.Token;
 import tictactoe.ui.Console;
 
@@ -11,22 +10,35 @@ class Main {
     static void main() {
 
         Console.println("Welcome to Tic Tac Toe!");
+        Console.println("You can play as a human or computer:");
+        Console.println("Use @randy or @omola");
+
         var playerX = Console.promptForPlayer(Token.X);
         var playerO = Console.promptForPlayer(Token.O);
+
         var game = new TicTacToeGame(playerX, playerO);
 
         while (game.getStatus() == InProgress) {
 
             var turnData = game.doNextTurn();
 
-            Console.println("%s plays %s at %s %s".formatted(turnData.whoseTurn().name(), turnData.whoseTurn().token(), turnData.positionPlayed().row(), turnData.positionPlayed().col()));
+            // ✅ FIXED: name() → getName(), token() → getToken()
+            Console.println("%s plays %s at %s %s".formatted(
+                    turnData.whoseTurn().getName(),
+                    turnData.whoseTurn().getToken(),
+                    turnData.positionPlayed().row(),
+                    turnData.positionPlayed().col()
+            ));
+
             Console.showBoard(turnData.newBoardState());
 
             switch (game.getStatus()) {
                 case Draw -> Console.println("It's a draw!");
-                case XWins, OWins -> Console.println("%s wins!".formatted(turnData.whoseTurn().name()));
+                case XWins, OWins ->
+                        Console.println("%s wins!".formatted(
+                                turnData.whoseTurn().getName()
+                        ));
             }
-
         }
     }
 }
