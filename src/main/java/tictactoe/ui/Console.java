@@ -3,7 +3,8 @@ package tictactoe.ui;
 import tictactoe.game.*;
 import com.diogonunes.jcolor.AnsiFormat;
 import tictactoe.game.player.Player;
-
+import tictactoe.game.player.Linus;
+import tictactoe.game.player.Omola;
 import java.text.ParseException;
 
 import static com.diogonunes.jcolor.Attribute.*;
@@ -71,15 +72,15 @@ public class Console {
             var input = prompt(fPrompt.format("Who will play " + whichPlayer + "? "));
 
             // Handle computer players
-            if ( input.startsWith("@") ) {
+            if ( input.startsWith("L") ) {
                 input = input.substring(1).toLowerCase(); // remove the '@' prefix
 
                 switch ( input ) {
-                    // TODO: add cases here for the different computer players you implement
-                    default -> printAlert(helpMessage);
+                    case "linus" -> { return new Linus(whichPlayer); }
+                    case "omala" -> { return new Omola(whichPlayer); }
                 }
             } else {
-                return new Player(input, whichPlayer);
+                return new Player.HumanPlayer(input, whichPlayer);
             }
         }
     }

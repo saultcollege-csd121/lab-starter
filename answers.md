@@ -5,14 +5,13 @@ Place here your answers to the reflection questions in the lab instructions.
 ## Question 1
 Why *can* you change the type of the returned **value** in `promptForPlayer` without changing the return **type** in the function signature?
 ### Answer
-Your answer here
+because both player and human player share the same types.
 
 ## Question 2
 Explain why the call to `getNextMove` initially causes an error until you add the abstract method to the `Player` class. Your answer should involve a discussion of static (compile-time) vs dynamic (run-time) types. (HINT: What is the compile-time vs run-time type of the `player` variable in `TicTacToeGame.doNextTurn`?)
 ### Answer
-Your answer here
-
+The error of not finding the symbol method is in the compile time, this is because the method is not properly refrenced without the abstract paramater. 
 ## Question 3
 Explain in detail how it is possible that neither our main game loop nor our TicTacToeGame class need change at all when adding new Player types to our game.  Your discussion must include an explanation of how the single call to getNextMove in TicTacToeGame.doNextTurn works correctly no matter whose turn it is or which types the players are. Your answer should involve discussion of polymorphism and dynamic method dispatch.
 ### Answer
-Your answer here
+This is because the getNextMove is overridden for each AI user, the name/token for each user contains the data of their overridden getNextMove

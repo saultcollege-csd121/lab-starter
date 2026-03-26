@@ -1,7 +1,6 @@
 package tictactoe;
 
 import tictactoe.game.TicTacToeGame;
-import tictactoe.game.Position;
 import tictactoe.game.Token;
 import tictactoe.ui.Console;
 
@@ -10,7 +9,7 @@ import static tictactoe.game.TicTacToeGame.Status.*;
 class Main {
     static void main() {
 
-        Console.println("Welcome to Tic Tac Toe!");
+        Console.println("Welcome to Tic Tac Toe! To chose a computer character when prompted type Linus or Omola");
         var playerX = Console.promptForPlayer(Token.X);
         var playerO = Console.promptForPlayer(Token.O);
         var game = new TicTacToeGame(playerX, playerO);
