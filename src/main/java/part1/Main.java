@@ -38,7 +38,7 @@ public class Main {
             run(new ConsoleLogger(), 50);
 
             // TODO: uncomment this while you are trying out your MemoryLogger
-            // export(logger, new FileOutputStream("logs.txt"));  // OR try System.out as the second parameter!
+//            export(MemoryLogger, new FileOutputStream("logs.txt"));  // OR try System.out as the second parameter!
 
         } catch (Exception e) {
             IO.println("Could not create log file: " + e.getMessage());
@@ -46,7 +46,7 @@ public class Main {
         }
     }
 
-    public static void run(ConsoleLogger logger, int n) {
+    public static void run(Logger logger, int n) {
         for ( int i = 0; i < n; i++ ) {
             var randomLevel = LogLevel.values()[(int) (Math.random() * LogLevel.values().length)];
             var message = Messages.getRandomMessage();
