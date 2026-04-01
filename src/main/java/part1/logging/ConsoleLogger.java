@@ -1,9 +1,17 @@
 package part1.logging;
 
-import java.time.Instant;
+/**
+ * A logger that prints log messages to the console.
+ */
+public class ConsoleLogger implements Logger {
 
-public class ConsoleLogger {
+    /**
+     * Logs a message with different severity levels.
+     * @param message the message to log
+     * @param level the severity level of each message
+     */
+    @Override
     public void log(String message, LogLevel level) {
-        System.out.println(Instant.now().toString() + " [" + level + "] " + message);
+        System.out.println(formatMessage(message, level));
     }
 }
