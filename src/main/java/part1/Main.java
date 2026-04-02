@@ -18,13 +18,15 @@ public class Main {
             // TODO: Implementnt AT LEAST one of these
 //            Logger logger = new ColorLogger();
 //            Logger logger = new InDenialLogger();
-//            Logger logger = new LoudLogger();
+              Logger easylogger = new LoudLogger();
+              run(easylogger,50);
 
-            /* === Medium loggers === */
+            /* === Medum loggers === */
             // TODO: Implement at least one of these
 //            Logger logger = new CensoriousLogger(List.of("hungrish", "drabblex", "clorphed", "snorvish", "grumblet", "flonky", "blarfish"));
 //            Logger logger = new MultiLogger(List.of(new ConsoleLogger(), new StreamLogger(new FileOutputStream("log.txt"))));
-//            Logger logger = new StreamLogger(System.out);                      // Using System.out as the destination
+            Logger harderLogger = new StreamLogger(System.out);
+            run(harderLogger,50);// Using System.out as the destination
 //            Logger logger = new StreamLogger(new FileOutputStream("log.txt")); // Using a file as the destination
 
             // TODO: Implement MemoryLogger
@@ -38,7 +40,9 @@ public class Main {
             run(new ConsoleLogger(), 50);
 
             // TODO: uncomment this while you are trying out your MemoryLogger
-            // export(logger, new FileOutputStream("logs.txt"));  // OR try System.out as the second parameter!
+            MemoryLogger memoryLogger = new MemoryLogger();
+            run(memoryLogger,50);
+            export(memoryLogger, new FileOutputStream("logs.txt"));  // OR try System.out as the second parameter!
 
         } catch (Exception e) {
             IO.println("Could not create log file: " + e.getMessage());
@@ -46,7 +50,7 @@ public class Main {
         }
     }
 
-    public static void run(ConsoleLogger logger, int n) {
+    public static void run(Logger logger, int n) {
         for ( int i = 0; i < n; i++ ) {
             var randomLevel = LogLevel.values()[(int) (Math.random() * LogLevel.values().length)];
             var message = Messages.getRandomMessage();
