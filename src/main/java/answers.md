@@ -2,7 +2,7 @@
 ## Question 1
 Use the terms “subtype”, “polymorphism” and “dynamic method dispatch” to explain why Main.run works correctly for ANY of your Logger implementations.
 
-Main.run takes a Logger parameter, so any class that implements it is a subtype and can be passed in. Thats polymorphism you don't need a different run for each logger. At runtime Java figures out which actual log to call based on the real object, not the declared type. That's dynamic method dispatch doing its thing.
+Main.run  takes a Logger parameter, so any class that implements it is a subtype and can be passed in. Thats polymorphism you don't need a different run for each logger. At runtime Java figures out which actual log to call based on the real object, not the declared type. That's dynamic method dispatch doing its thing.
 ##  Question 2
 Why can the Logger.formatMessage method have a default implementation? Why must the Logger.log method be abstract?
 
