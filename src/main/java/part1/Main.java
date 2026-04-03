@@ -12,6 +12,22 @@ public class Main {
     static void main(String[] args) {
 
         try {
+            /* === Easy loggers === */
+//            Logger logger = new ColorLogger();
+//            Logger logger = new InDenialLogger();
+//            Logger logger = new LoudLogger();
+
+            /* === Medium loggers === */
+//            Logger logger = new CensoriousLogger(List.of("hungrish", "drabblex", "clorphed", "snorvish", "grumblet", "flonky", "blarfish"));
+//            Logger logger = new MultiLogger(List.of(new ConsoleLogger(), new StreamLogger(new FileOutputStream("log.txt"))));
+//            Logger logger = new StreamLogger(System.out);                      // Using System.out as the destination
+//            Logger logger = new StreamLogger(new FileOutputStream("log.txt")); // Using a file as the destination
+
+//            MemoryLogger logger = new MemoryLogger();
+
+            // TODO: (Optional) Implement a JDBC logger
+//            Logger logger = new JdbcLogger("jdbc:sqlite:log.db");
+
             MemoryLogger logger = new MemoryLogger();
             run(logger, 50);
             export(logger, new FileOutputStream("logs.txt")); // Export all stored messages to a file
