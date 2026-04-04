@@ -10,12 +10,18 @@ public class MemoryLogger implements Logger, Exportable{
     // Stores all log messages in memory
     private final List<String> logs = new ArrayList<>();
 
+    /**
+     * Saves the formatted message to the list instead of printing it.
+     */
     @Override
     public void log(String message, LogLevel level){
         // Add the formatted message to the list
         logs.add(formatMessage(message, level));
     }
 
+    /**
+     * Writes all stored log messages to the given output stream.
+     */
     @Override
     public void exportTo(OutputStream out) {
 

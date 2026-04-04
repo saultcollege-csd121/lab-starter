@@ -7,7 +7,10 @@ public class StreamLogger implements Logger {
 
     private final PrintWriter writer;
 
-    // Store the stream as a PrintWriter so we can easily write text lines to it
+    /**
+     * Creates a logger that writes to the given output stream
+     * @param out the stream to write log messages to System.out or a file
+     */
     public StreamLogger(OutputStream out) {
         this.writer = new PrintWriter(out);
     }

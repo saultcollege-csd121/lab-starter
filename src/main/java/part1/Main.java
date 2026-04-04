@@ -37,7 +37,12 @@ public class Main {
             e.printStackTrace();
         }
     }
-    // Any logger works here
+
+    /**
+     * Logs n random messages using the given logger
+     * @param logger any Logger implementation to use
+     * @param n how many messages to log
+     */
     public static void run(Logger logger, int n) {
         for ( int i = 0; i < n; i++ ) {
             var randomLevel = LogLevel.values()[(int) (Math.random() * LogLevel.values().length)];
@@ -46,6 +51,11 @@ public class Main {
         }
     }
 
+    /**
+     * Exports all stored logs to the given output stream
+     * @param exporter an Exportable object
+     * @param stream where to send the exported logs
+     */
     public static void export(Exportable exporter, OutputStream stream) {
         exporter.exportTo(stream);
     }

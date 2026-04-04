@@ -6,10 +6,17 @@ public class CensoriousLogger implements Logger {
 
     private final List<String> bannedWords;
 
+    /**
+     * Creates a logger that censors specific words
+     * @param bannedWords list of words to replace with asterisks
+     */
     public CensoriousLogger(List<String> bannedWords) {
         this.bannedWords = bannedWords;
     }
 
+    /**
+     * Logs the message after replacing any banned words with * symbols
+     */
     @Override
     public void log(String message, LogLevel level) {
         String censored = message;
