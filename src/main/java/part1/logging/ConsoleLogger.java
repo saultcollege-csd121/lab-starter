@@ -1,9 +1,9 @@
 package part1.logging;
 
-import java.time.Instant;
+public class ConsoleLogger implements Logger {
 
-public class ConsoleLogger {
+    @Override
     public void log(String message, LogLevel level) {
-        System.out.println(Instant.now().toString() + " [" + level + "] " + message);
+        System.out.println(formatMessage(message, level));
     }
 }
