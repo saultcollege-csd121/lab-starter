@@ -40,23 +40,23 @@ public class Main extends Application {
         view.getCategoryBox().setOnAction(event -> {
             ConversionCategory selected = view.getCategoryBox().getValue();
             if (selected != null) {
-                view.loadConversionsFor(selected);
+                view.loadConversionsFor(selected); // tell the view to populate the second dropdown
             }
         });
 
-        // Wire up the conversion ComboBox when the user picks a conversion, enable the input field
+        // Wire up the conversion ComboBox when the user picks a conversion,     enable the input field
         view.getConversionBox().setOnAction(event -> {
-            if (view.getConversionBox().getValue() != null) {
-                view.enableInput();
+            if (view.getConversionBox().getValue() != null) { // only act if a conversion is selected
+                view.enableInput(); // tell the view to enable the TextField and Convert button
             }
         });
 
         // Build and show the scene
         Scene scene = new Scene(view, 420, 480);
-        stage.setTitle("Unit Converter");
-        stage.setScene(scene);
+        stage.setTitle("Unit Converter"); // text shown in the OS title bar
+        stage.setScene(scene); // attach the scene (and everything inside it) to the window
         stage.setResizable(false);
-        stage.show();
+        stage.show(); // make the window visible
     }
 
     /**

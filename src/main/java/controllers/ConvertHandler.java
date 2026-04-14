@@ -9,19 +9,29 @@ import ui.ConverterView;
 import java.io.IOException;
 
 /**
- * TODO
+ * ConvertHandler is responsible for handling the click event of the Convert button.
+ *
+ * It implements the EventHandler interface from JavaFX, which means it must
+ * have a handle() method that JavaFX will call automatically when the button is clicked.
+ *
+ * In the MVC pattern, this class is the Controller it sits between the view
+ * (ConverterView) and the core logic (Conversion) and coordinates them:
+ *
+ *   1. Reads the user's input from the view
+ *   2. Validates it (checks it's actually a number)
+ *   3. Calls the conversion formula from the core package
+ *   4. Tells the view to display the result
+ *   5. Tells the IO layer to save the result to a file
  */
 public class ConvertHandler implements EventHandler<ActionEvent> {
 
-    // The view this handler reads input from and writes results to
     private final ConverterView view;
-
-    // The IO component that logs results to a file
     private final HistoryFileWriter fileWriter;
 
     /**
-     * Constructs a ConvertHandler with its required dependencies injected
-     * TODO
+     * Creates a ConvertHandler with its two dependencies injected from outside
+     * @param view the ConverterView to read input from and display results to
+     * @param fileWriter the HistoryFileWriter to log results with
      */
     public ConvertHandler(ConverterView view, HistoryFileWriter fileWriter) {
         this.view = view;
@@ -29,8 +39,11 @@ public class ConvertHandler implements EventHandler<ActionEvent> {
     }
 
     /**
-     * Called by JavaFX when the "Convert" button fires an {@link ActionEvent}
-     * TODO
+     * Called automatically by JavaFX when the Convert button is clicked
+     *
+     * This method does not do the math itself it delegates to Conversion.convert()
+     * for the calculation and to HistoryFileWriter.appendEntry() for the file logging.
+     * Each class is responsible for only its own job
      */
     @Override
     public void handle(ActionEvent event) {

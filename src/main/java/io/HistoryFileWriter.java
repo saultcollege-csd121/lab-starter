@@ -7,10 +7,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Handles writing conversion results to a plain text history log file
+ * Responsible for saving conversion results to a text file called history.txt
  *
- * <p>Each time the user performs a conversion, one line is appended to
- * {@code history.txt} in the working directory.</p>
+ * Every time the user performs a conversion, this class appends one line
+ * to the file with a timestamp, the conversion name, and the result
+ * If the file does not exist yet it is created automatically
  */
 public class HistoryFileWriter {
 
@@ -19,18 +20,20 @@ public class HistoryFileWriter {
 
     // Formatter for timestamps on each log entry
     private static final DateTimeFormatter FORMATTER =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     /**
-     * Appends one conversion result as a new line to {@code history.txt}.
-     * TODO
+     * Appends one conversion result as a new line to history.txt.
+     * The file is opened in append mode, meaning existing content is never
+     * overwritten: each call just adds a new line at the bottom
+     *
+     * Example line written:
+     * [2024-01-15 10:30:45]  km → miles  |  input: 10.0000  →  result: 6.2137
      */
-    public void appendEntry(String conversionName, double input, double result)
-            throws IOException {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_PATH, true))) {
-            String timestamp = LocalDateTime.now().format(FORMATTER);
-            writer.printf("[%s]  %s  |  input: %.4f  →  result: %.4f%n",
-                    timestamp, conversionName, input, result);
+    public void appendEntry(String conversionName, double input, double result) throws IOException {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_PATH, true))) { // Opens history.txt in append mode
+            String timestamp = LocalDateTime.now().format(FORMATTER); // // Capture the current date and time and format it as a readable string
+            writer.printf("[%s]  %s  |  input: %.4f  →  result: %.4f%n", timestamp, conversionName, input, result);
         }
     }
 }

@@ -16,12 +16,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
 /**
  * The main UI panel for the Unit Converter application
- * TODO
+ *
+ * This class builds and displays all the visual elements the user interacts with:
+ * a category dropdown, a conversion dropdown, a number input, a convert button,
+ * and labels to show the result and status.
+ *
+ * It extends VBox, meaning all its children are stacked vertically on screen
  */
-// ConverterView is a VBox. It inherits all VBox behaviour
-// and adds our specific controls on top. VBox is a Pane → Region → Node
+
 public class ConverterView extends VBox {
 
     // Instance variables
@@ -33,9 +38,9 @@ public class ConverterView extends VBox {
     private final Label statusLabel;
 
     /**
-     * Builds and lays out every UI node
+     * Builds and lays out every UI element.
+     * Called once when Main creates a new ConverterView().
      */
-    // This is the constructor
     public ConverterView() {
 
         // CONFIGURE VBOX
@@ -107,7 +112,7 @@ public class ConverterView extends VBox {
         divider.setFill(Color.web("#DDDDDD")); // light grey
 
         // RESULT LABEL
-        resultLabel = new Label(""); // starts empty
+        resultLabel= new Label(""); // starts empty
         resultLabel.setFont(Font.font("Georgia", FontWeight.BOLD, 22)); // large bold text for the result
         resultLabel.setTextFill(Color.web("#1A1A2E"));
         resultLabel.setWrapText(true); // if text is too long, wrap to next line instead of cutting off
@@ -115,7 +120,7 @@ public class ConverterView extends VBox {
         // STATUS LABEL
         statusLabel = new Label(""); // starts empty
         statusLabel.setFont(Font.font("Georgia", 12)); // smaller, lighter text
-        statusLabel.setTextFill(Color.web("#888888"));// light grey - secondary information
+        statusLabel.setTextFill(Color.web("#888888"));// light grey
 
         // ADD ALL CHILDREN TO THIS VBOX
         // getChildren() returns the VBox's list of child nodes
@@ -127,7 +132,7 @@ public class ConverterView extends VBox {
             inputLabel, inputField, // Value to convert: label + text box
             convertButton, // the Convert button
             divider, // thin grey line divider
-            resultLabel, // result text
+            resultLabel,// result text
             statusLabel  // status text
         );
     }
@@ -164,7 +169,7 @@ public class ConverterView extends VBox {
      */
     public void loadConversionsFor(ConversionCategory category) {
         conversionBox.setItems( // replaces the dropdown's content
-                FXCollections.observableArrayList(category.getConversions()) // wraps the category's conversion list
+            FXCollections.observableArrayList(category.getConversions()) // wraps the category's conversion list
         );
         conversionBox.getSelectionModel().clearSelection(); // deselects whatever was previously chosen
         conversionBox.setPromptText("Select a conversion...");
