@@ -1,0 +1,25 @@
+{
+  "functions": [
+    {
+      "name": "Complex Wave",
+      "type": "complex_wave",
+      "defaultAmplitude": 1.0,
+      "defaultParameterA": 37.35,
+      "defaultParameterC": 6.92
+    },
+    {
+      "name": "Parabola",
+      "type": "parabola",
+      "defaultAmplitude": 1.0,
+      "defaultParameterA": 0.1,
+      "defaultParameterC": 1.0
+    },
+    {
+      "name": "Exponential",
+      "type": "exponential",
+      "defaultAmplitude": 1.0,
+      "defaultParameterA": 1.0,
+      "defaultParameterC": 1.0
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# This is just here so Git keeps the 'ui' directory
+
+# Put UI-related (JavaFX) code in this package.
+# It may depend on core data types, but should require very little (if any) dependency on the IO package.
+# Leave that kind of thing to the controllers package, which can depend on both the UI and IO packages.

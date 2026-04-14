@@ -1,0 +1,8 @@
+# This is just here so Git keeps the 'controllers' directory
+
+# Place 'controller' classes in this package.
+# These classes should be responsible for controlling the flow of the application,
+# These classes should delegate
+#  - to the 'core' package for data and logic,
+#  - to the 'ui' package for user interaction,
+#  - to the 'io' package for file/database/network input/output
