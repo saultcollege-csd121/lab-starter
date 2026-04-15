@@ -16,29 +16,31 @@ public class Main {
 
             /* === Easy loggers === */
             // TODO: Implementnt AT LEAST one of these
-//            Logger logger = new ColorLogger();
+            Logger logger = new ColorLogger();
 //            Logger logger = new InDenialLogger();
 //            Logger logger = new LoudLogger();
-
+//            run(logger, 10);
             /* === Medium loggers === */
             // TODO: Implement at least one of these
 //            Logger logger = new CensoriousLogger(List.of("hungrish", "drabblex", "clorphed", "snorvish", "grumblet", "flonky", "blarfish"));
-//            Logger logger = new MultiLogger(List.of(new ConsoleLogger(), new StreamLogger(new FileOutputStream("log.txt"))));
+//            Logger logger = new MultiLogger(List.of(new InDenialLogger(), new ColorLogger(), new LoudLogger()));
 //            Logger logger = new StreamLogger(System.out);                      // Using System.out as the destination
-//            Logger logger = new StreamLogger(new FileOutputStream("log.txt")); // Using a file as the destination
+//            Logger logger = new StreamLogger(new FileOutputStream("log.txt")); // Using a file as the destination..WORKS.
 
+//            run(logger, 10);
             // TODO: Implement MemoryLogger
 //            MemoryLogger logger = new MemoryLogger();
+            run(logger, 10);
 
             // TODO: (Optional) Implement a JDBC logger
 //            Logger logger = new JdbcLogger("jdbc:sqlite:log.db");
-
+//            run(logger, 3);
             // TODO: you can change the first argument here to one of the loggers above,
             //       or to a different constructor call based on the examples above.
-            run(new ConsoleLogger(), 50);
+//            run(new ConsoleLogger(), 50);
 
             // TODO: uncomment this while you are trying out your MemoryLogger
-            // export(logger, new FileOutputStream("logs.txt"));  // OR try System.out as the second parameter!
+//             export(logger,(new FileOutputStream("log.txt")));  // OR try System.out as the second parameter!
 
         } catch (Exception e) {
             IO.println("Could not create log file: " + e.getMessage());
@@ -46,7 +48,7 @@ public class Main {
         }
     }
 
-    public static void run(ConsoleLogger logger, int n) {
+    public static void run(Logger logger, int n) {
         for ( int i = 0; i < n; i++ ) {
             var randomLevel = LogLevel.values()[(int) (Math.random() * LogLevel.values().length)];
             var message = Messages.getRandomMessage();
