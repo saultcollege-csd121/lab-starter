@@ -6,6 +6,10 @@ import java.util.Scanner;
 import tictactoe.game.Board;
 import tictactoe.game.Position;
 
+import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.diogonunes.jcolor.Attribute.MAGENTA_BACK;
+import static com.diogonunes.jcolor.Attribute.YELLOW_TEXT;
+
 /**
  * Helper methods for doing console-based user interaction
  */
@@ -33,7 +37,7 @@ public class Console {
      * @param message The message to display
      */
     public static void printAlert(String message) {
-        IO.println(message);
+        IO.println(colorize(message,YELLOW_TEXT(),MAGENTA_BACK()));
     }
 
     /**
