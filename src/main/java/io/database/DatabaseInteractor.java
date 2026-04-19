@@ -1,0 +1,103 @@
+package io.database;
+
+import controllers.Control;
+import core.RunData;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.*;
+import java.text.DecimalFormat;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
+
+public class DatabaseInteractor {
+
+   Connection connection;
+   Runnable onError;
+    public DatabaseInteractor(Runnable errorDisplay){
+        this.onError = errorDisplay;
+
+        try {
+            this.connection = DriverManager.getConnection(System.getenv("url"),  "qwertyUser", System.getenv("password") );
+        } catch (SQLException e) {
+
+            this.connection = null; //setting connection to null, so we can handle it.
+
+        }
+    }
+    /**
+     * sends data from a runData record to the database.
+     */
+    public void sendData(RunData runData){
+
+
+        try {
+
+            PreparedStatement s = this.connection.prepareStatement(
+
+                    "INSERT INTO loggedruns (time, date, name, BACKTRACKS, KeyStrokes, charcount, wordcount)  VALUES " +
+                            "(?, ?, ?, ?, ?, ?, ?);"
+            );
+            s.setDouble(1, runData.time());
+            s.setDate(2, new Date(System.currentTimeMillis()));
+            s.setString(3, runData.name());
+            s.setInt(4, runData.backTracked());
+            s.setInt(5, runData.keyStrokes());
+            s.setInt(6, runData.characterCount());
+            s.setInt(7, runData.wordCount());
+
+            s.execute();
+
+        } catch (SQLException e){
+           onError.run();
+        }
+    }
+//gets the last ? entries from the db.
+
+    /**
+     * retrieves data from last N entries in the form of an array of arrays containing strings.
+     */
+    public List<RunData> retrieveLastNEntries(int num){
+
+        ArrayList<RunData> arraylist = new ArrayList<>();
+
+            try {
+                PreparedStatement s = this.connection.prepareStatement("SELECT * from loggedruns  ORDER BY runID DESC LIMIT "+ num +" ;");
+                ResultSet results = s.executeQuery();
+
+
+                while (results.next()){
+                    RunData entry = new RunData(results.getDouble("time"),
+                            results.getString("name"),
+                            results.getInt("KeyStrokes"),
+                            results.getInt("BACKTRACKS"),
+                            results.getInt("wordcount"),
+                            results.getInt("charcount"));
+                    arraylist.add(entry);
+                }
+                return(arraylist.stream().toList());
+
+            } catch (SQLException e) {
+                onError.run();
+            }
+
+         return(arraylist.stream().toList());
+    }
+
+//to stop from asking to save to the db if connection isn't working.
+    public boolean isConnectionValid(){
+        try {
+            if (!(this.connection ==null) && !this.connection.isClosed()){
+                return(true);
+            }
+        } catch (SQLException e) {
+            return(false);
+        }
+        return(false); //we'd never get here but whatever
+    }
+
+
+}
