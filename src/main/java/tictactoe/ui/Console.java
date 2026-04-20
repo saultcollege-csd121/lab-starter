@@ -6,18 +6,27 @@ import java.util.Scanner;
 import tictactoe.game.Board;
 import tictactoe.game.Position;
 
-/**
- * Helper methods for doing console-based user interaction
- */
+import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.diogonunes.jcolor.Attribute.*;
+
 public class Console {
 
+    /**
+     * Helper methods for doing console-based user interaction
+     */
 
     public static void println(String message) {
         IO.println(message);
     }
 
     /**
-     /**
+     * Optional: print regular info in a different color
+     */
+    public static void printInfo(String message) {
+        IO.println(colorize(message, BRIGHT_GREEN_TEXT()));
+    }
+
+    /**
      * Prompt the user for input using the given promptMessage
      * @param promptMessage The message to prompt the user with
      * @return The user's response
@@ -29,11 +38,11 @@ public class Console {
     }
 
     /**
-     * Display an alert message to the user
+     * Display an alert (error) message to the user (colored)
      * @param message The message to display
      */
     public static void printAlert(String message) {
-        IO.println(message);
+        IO.println(colorize(message, BRIGHT_RED_TEXT()));
     }
 
     /**
@@ -45,23 +54,23 @@ public class Console {
      */
     public static Position promptForPosition(String prompt, Board board) {
 
-        final String helpMessage = "Input must be in the format 'row column', e.g., '1 2' or 't m' for the top middle cell.";
+        final String helpMessage =
+                "Input must be in the format 'row column', e.g., '1 2' or 't m' for the top middle cell.";
 
-        while ( true ) {
+        while (true) {
             var input = IO.readln(prompt).trim();
 
-            // The .parse method may throw if the user entered invalid location text, so we try/catch
             try {
-
                 var pos = Position.parse(input);
 
-                if (! board.isEmptyAt(pos)) {
+                if (!board.isEmptyAt(pos)) {
                     printAlert("That position is already taken.");
                     continue;
                 }
 
                 return pos;
-            } catch ( ParseException e ) {
+
+            } catch (ParseException e) {
                 printAlert(helpMessage);
             }
         }

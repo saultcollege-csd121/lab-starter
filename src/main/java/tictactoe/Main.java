@@ -9,7 +9,7 @@ import static tictactoe.game.TicTacToeGame.Status.*;
 class Main {
     static void main() {
 
-        Console.println("Welcome to Tic Tac Toe!");
+        Console.printInfo("Welcome to Tic Tac Toe!");
         var nameX = Console.prompt("Player X name: ");
         var nameO = Console.prompt("Player O name: ");
         var game = new TicTacToeGame(nameX, nameO);
