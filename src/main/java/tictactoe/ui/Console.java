@@ -1,5 +1,7 @@
 package tictactoe.ui;
-
+import tictactoe.game.player.HumanPlayer;
+import tictactoe.game.player.RandyPlayer;
+import tictactoe.game.player.OptimusPlayer;
 import tictactoe.game.*;
 import com.diogonunes.jcolor.AnsiFormat;
 import tictactoe.game.player.Player;
@@ -65,7 +67,7 @@ public class Console {
      */
     public static Player promptForPlayer(Token whichPlayer) {
 
-        var helpMessage = "To make a computer player, use the format '@<name>' where <name> is one of Linus, Omla, Optimus, or Randy.";
+        var helpMessage = "To make a computer player, use the format '@<name>' where <name> is Optimus, or Randy.";
 
         while ( true ) {
             var input = prompt(fPrompt.format("Who will play " + whichPlayer + "? "));
@@ -76,10 +78,12 @@ public class Console {
 
                 switch ( input ) {
                     // TODO: add cases here for the different computer players you implement
+                    case "randy" -> { return new RandyPlayer(whichPlayer); }
+                    case "optimus" -> { return new OptimusPlayer(whichPlayer); }
                     default -> printAlert(helpMessage);
                 }
             } else {
-                return new Player(input, whichPlayer);
+                return new HumanPlayer(input, whichPlayer);
             }
         }
     }
